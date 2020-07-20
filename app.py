@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-#teste
+#testando streamlit dploy
 
 # importar as bibliotecas necessárias
 import pandas as pd
