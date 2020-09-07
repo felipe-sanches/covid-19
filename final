@@ -1,0 +1,39 @@
+
+
+
+
+
+
+#sidebar
+
+
+# Add a slider to the sidebar:
+#qnt_cases = st.sidebar.slider('Nº de casos', 0, 2000000)
+
+#grafico lado a lado
+fig, ax = plt.subplots(nrows=1, ncols=2)
+
+#grafico - cidades com maior numero de casos
+ten_cities = df.sort_values(['totalCases'], ascending=False).head()
+
+#grafico cidades com maior numero de mortes
+ten_deaths = df.sort_values(['deaths'], ascending=False).head()
+
+
+ax[0].plot(x=ten_cities['city'], y=ten_cities['totalCases'], kind="barh", ax=ax)
+
+
+    
+st.pyplot()
+
+
+
+
+#fig, ax = plt.subplots(figsize=(15,7))
+
+
+
+st.pyplot()
+
+
+
