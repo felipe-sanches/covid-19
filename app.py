@@ -115,10 +115,3 @@ st.sidebar.warning("Total de Casos: {}".format(df_lastday['totalCases'].sum()))
 #total de Mortes
 st.sidebar.error("Total de Mortes: {}".format(df_lastday['deaths'].sum()))
 
-
-#adicionando selectbox na sidebar
-checkbox = st.sidebar.checkbox("Exibir tabelas de dados no final da página")
-
-if checkbox:
-    st.write(df)
-
