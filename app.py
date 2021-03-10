@@ -10,7 +10,7 @@ import pydeck as pdk
 #Tratamento dos dados
 # importar os datasets COVID-19 para os respectivos DataFrames
 gps = pd.read_csv('https://raw.githubusercontent.com/wcota/covid19br/master/gps_cities.csv')
-covid_complete = pd.read_csv('https://raw.githubusercontent.com/wcota/covid19br/master/cases-brazil-cities-time.csv')
+covid_complete = pd.read_csv('https://raw.githubusercontent.com/wcota/covid19br/master/cases-brazil-cities-time_changesOnly.csv')
 
 #mudando o nome da coluna id para city
 gps = gps.rename(columns={'id': 'city'})
