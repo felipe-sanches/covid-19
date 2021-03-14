@@ -25,7 +25,7 @@ df_lastday = df.loc[df['date'] == lastday]
 
 
 #informar data dos dados
-st.write("Dados atualizados até as 23:59h do dia {}".format(df['date'].max()))
+st.write("Dados atualizados pela última vez no dia {}".format(df['date'].max()))
 
 #título
 st.title("CENÁRIO DA COVID-19 NO BRASIL")
