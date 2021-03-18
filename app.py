@@ -43,7 +43,7 @@ st.markdown(
     """
 )
 
-
+'''
 #slider semana epidemiológica
 semana = df['epi_week'].values.tolist()
 
@@ -60,8 +60,14 @@ datas = datas_semana_epi['date'].values.tolist()
 dataslist = list(dict.fromkeys(datas))
 
 selected_date = st.selectbox("Escolha a data", dataslist)
+'''
+date = st.date_input(label, value=None, min_value= df['date'].min(), max_value= df['date'].max(), key=None)
+st.write(date)
 
 
+
+
+'''
 #recorte do dataframe para a data selecionada
 date_cut = df.loc[df['date'] == selected_date]
 
@@ -69,11 +75,33 @@ date_cut = df.loc[df['date'] == selected_date]
 #mapa indicador de cidades infectadas
 st.subheader("Mapa de Cidades Infectadas em {}".format(selected_date))
 st.text("")
-st.map(date_cut)
+#st.map(date_cut)
+st.pydeck_chart(pdk.Deck(
+    initial_view_state=pdk.ViewState(
+        latitude=-23.567145,
+        longitude=-46.648936,
+        zoom=5,
+        pitch=50),
+    layers=[pdk.Layer(
+        'HexagonLayer',
+        date_cut,
+        get_position=['lon', 'lat'],
+        get_elevation_value=date_cut['totalCases'],
+        auto_highlight=True,
+        elevation_scale=50,
+        pickable=True,
+        elevation_range=[0, 3000],
+        extruded=True,
+        coverage=1)],
+))
+
+'''
+#definindo ultimo dia de registros
+last_day = df.loc[df['date'] == df['date'].max()]
 
 
 #grafico - cidades com maior numero de casos
-ten_cities = date_cut.sort_values(['totalCases'], ascending=False).head(10)
+ten_cities = last_day.sort_values(['totalCases'], ascending=True).head(10)
 
 fig, ax = plt.subplots(figsize=(15,10))
 
