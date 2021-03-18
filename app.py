@@ -66,7 +66,6 @@ st.write(date)
 
 
 
-
 '''
 #recorte do dataframe para a data selecionada
 date_cut = df.loc[df['date'] == selected_date]
